@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import home from './views/Home/index.vue'
+import Test from './views/Test/index.vue'
+
 const a = ref(0)
 getUserInfo().then(res => {
   console.log(res,'res')
@@ -8,7 +11,8 @@ getUserInfo().then(res => {
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-    <div>{{ a }}</div>
+      <home/>
+      <test></test>
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
