@@ -19,7 +19,9 @@ export default (options = {}) => {
                 if (url.startsWith(option.url)) {
                     res.setHeader('Content-Type', 'application/json')
                     //取出api开头的路径或者用户自定义的
-                    const url_path = req.url.replace(option.url, '')
+                    let url_path = req.url.replace(option.url, '')
+                    url_path = url_path.includes('?') ? url_path.split('?')[0] : url_path
+
                     //根据路径去找src下的mock下的json文件
                     const mock_url = path.resolve(cwd, option.root_url + url_path)
                     if (!noSuchFile(mock_url, res)) {
@@ -47,6 +49,7 @@ const noSuchFile = (url, res) => {
     }
     res.end(JSON.stringify({
         code: 8,
+        data:null,
         msg: 'faild->路径有误无法找到文件',
     }))
     return false

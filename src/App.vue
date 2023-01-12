@@ -1,14 +1,28 @@
 <script setup lang="ts">
+import home from './views/Home/index.vue'
+import Test from './views/Test/index.vue'
+
+
 const a = ref(0)
-getUserInfo().then(res => {
-  console.log(res,'res')
+const data = {
+    id:'ceshi'
+}
+const  getUser=()=> {
+  getUserInfo(data).then(res => {
+  
+}).catch(err => {
+  console.log(err);
+  
 })
+}
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-    <div>{{ a }}</div>
+    <el-button type="primary" @click="getUser">Primary</el-button>
+      <home/>
+      <test></test>
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
@@ -23,6 +37,7 @@ getUserInfo().then(res => {
 </template>
 
 <style scoped>
+
 header {
   line-height: 1.5;
   max-height: 100vh;
