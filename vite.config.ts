@@ -3,6 +3,9 @@ import { fileURLToPath, URL } from 'node:url'
 import mockJS from './config/mockJS/index'
 //自动导包 
 import AutoImport from './config/plugins/autoImport'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -19,7 +22,12 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
       mockJS({
         root_url:'./config/mock'
       }),
-      AutoImport(),
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
     ],
     resolve: {
       alias: {

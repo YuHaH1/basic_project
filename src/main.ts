@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 
 import './assets/main.css'
+import 'element-plus/dist/index.css'
 
 import autoRegisterCompoents from './common/functions/autoRegisterComponents'
 import autoRegisterRouter from './common/functions/autoRegisterRouter'
